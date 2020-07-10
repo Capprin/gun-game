@@ -1,3 +1,7 @@
 Logs/
 Temp/
 Library/
+*.sln
+.vs/
+Assembly-CSharp.csproj
+obj/
