@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 971d15b65c471f146b9dd3fb271163af
+=======
+guid: 4606d336a71536645b07552db7ba04bf
+>>>>>>> Added wall sprite
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
