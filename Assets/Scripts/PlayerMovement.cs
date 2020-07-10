@@ -21,10 +21,7 @@ public class PlayerMovement : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        if (movement.magnitude > 1) {
-            movement.Normalize();
-        }
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized;
 
         body.MovePosition(body.position + speed * movement * Time.fixedDeltaTime);
     }
