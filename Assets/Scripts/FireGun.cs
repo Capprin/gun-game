@@ -6,7 +6,7 @@ public class FireGun : MonoBehaviour
 {
 
     GameObject Gun;
-    const int fire_delay_init = 120;
+    public int fire_delay_init = 60;
     public int bullet_speed = 2000;
 
     int fire_delay;
@@ -30,7 +30,7 @@ public class FireGun : MonoBehaviour
                 can_fire = false;
                 GameObject Bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, transform.rotation);
                 Rigidbody2D rb = Bullet.GetComponent<Rigidbody2D>();
-                rb.AddRelativeForce(new Vector2(-1 * bullet_speed,0));   
+                rb.AddRelativeForce(new Vector2(bullet_speed,0));   
             }
         }
         else {
