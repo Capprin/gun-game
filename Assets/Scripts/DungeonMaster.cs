@@ -7,10 +7,27 @@ public class DungeonMaster : MonoBehaviour {
     public Vector2 xRange = new Vector2(-14, 14);
     public Vector2 yRange = new Vector2(-10, 10);
 
+    public bool reset = false;
+
     private int enemiesAlive = 0;
+    private ModManager modManager;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start() {
+        // create modManager if not already exists
+        ModManager maybeManager = gameObject.GetComponent<ModManager>();
+        if (maybeManager == null) {
+            modManager = gameObject.AddComponent<ModManager>() as ModManager;
+        } else {
+            modManager = maybeManager;
+        }
+        // create player
+        player = (GameObject) Instantiate(Resources.Load("Player"),
+                                                     new Vector3(0, 0, 0),
+                                                     Quaternion.identity);
+        player.name = "Player";
+
         // do initial setup
         ResetRoom();
     }
@@ -18,15 +35,15 @@ public class DungeonMaster : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // check if all enemies dead
+        if (reset) {
+            Cleanup();
+            ResetRoom();
+            modManager.ActivateRandom();
+            reset = false;
+        }
     }
 
     void ResetRoom() {
-        // create player
-        GameObject player = (GameObject) Instantiate(Resources.Load("Player"),
-                                                     new Vector3(0, 0, 0),
-                                                     Quaternion.identity);
-        player.name = "Player";
-
         // create enemies
         GameObject[] enemies = new GameObject[4];
         for (int i = 0; i < 4; i++) {
@@ -48,6 +65,9 @@ public class DungeonMaster : MonoBehaviour {
     }
 
     void Cleanup() {
-
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies) {
+            Destroy(enemy);
+        }
     }
 }

@@ -403,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xRange: {x: -14, y: 14}
   yRange: {x: -10, y: 10}
+  reset: 0
 --- !u!4 &1542349188
 Transform:
   m_ObjectHideFlags: 0
@@ -429,7 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedfec27275b3e349966301d6ae4e969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmp_delay: 180
 --- !u!1 &1656871792
 GameObject:
   m_ObjectHideFlags: 0
