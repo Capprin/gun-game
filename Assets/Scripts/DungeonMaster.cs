@@ -10,7 +10,6 @@ public class DungeonMaster : MonoBehaviour {
 
     public bool reset = false;
 
-    private int enemiesAlive = 0;
     private ModManager modManager;
     private GameObject player;
     private int points;
