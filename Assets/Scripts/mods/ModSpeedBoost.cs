@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModSlowMove : Mod
+public class ModSpeedBoost : Mod
 {
     public override void Activate() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerMovement>().speed *= 0.95f;
+        player.GetComponent<PlayerMovement>().speed *= 1.05f;
     }
 
     public override string GetName() {
-        return "Slow Move";
+        return "Speed Boost";
     }
 }

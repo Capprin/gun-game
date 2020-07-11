@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModSlowMove : Mod
+public class ModMoreAccuracy : Mod
 {
     public override void Activate() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerMovement>().speed *= 0.95f;
+        player.GetComponentInChildren<FireGun>().accuracy = 0.95f;
     }
 
     public override string GetName() {
-        return "Slow Move";
+        return "Deadshot";
     }
 }
