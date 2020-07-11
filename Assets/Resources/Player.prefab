@@ -262,6 +262,8 @@ MonoBehaviour:
   fire_delay_init: 30
   bullet_speed: 2000
   bullet_scale: 1
+  accuracy: 0.85
+  max_fire_cone: 90
 --- !u!1 &7178819539860185644
 GameObject:
   m_ObjectHideFlags: 0
