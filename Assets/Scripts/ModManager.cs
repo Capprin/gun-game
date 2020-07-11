@@ -3,37 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ModManager : MonoBehaviour {
+    private List<Mod> modIndex = new List<Mod>();
+    private List<Mod> appliedMods = new List<Mod>();
+    public List<string> appliedModNames = new List<string>();
 
-    // Array of mods
-    List<mod> mods = new List<mod>();
-    int modMaxIndex;
-    // String to index mod map
-    Dictionary<string, int> nameToIndex;
-
-    public int tmp_delay = 180; // TODO remove
-
-    // Start is called before the first frame update
     void Start() {
-
-        // Create array of all mods
-        mods.Add(new mod_increaseFireRate());
-
-        // Generate name to index map in case we wish to call specific mods
-        nameToIndex = new Dictionary<string, int>();
-        nameToIndex.Add("increaseFireRate", 0);
-
-        modMaxIndex = mods.Count-1;
+        // add newly created mods to index
+        modIndex.Add(new ModIncreaseFireRate());
     }
 
-    // Update is called once per frame
-    void Update() {
+    public void ActivateRandom() {
+        int i = Random.Range(0, modIndex.Count);
+        Mod chosen = modIndex[i];
+        appliedMods.Add(chosen);
+        chosen.Activate();
 
-        // TODO remove
-        tmp_delay--;
-        if (tmp_delay < 0) {
-            tmp_delay = 180;
-            mods[0].Activate();
-        }
-
+        appliedModNames.Add(chosen.GetName());
     }
 }
