@@ -32,7 +32,7 @@ public class PlayerLife : MonoBehaviour {
                 current_flash = flash_time;
                 Color new_color = sprite.color;
                 if(new_color.a == 1) {
-                    new_color.a = 0.5f;
+                    new_color.a = 0.2f;
                 }
                 else {
                     new_color.a = 1f;
@@ -49,17 +49,28 @@ public class PlayerLife : MonoBehaviour {
         }
     }
 
+    void TakeDamage() {
+        if (current_inv <= 0) {
+            health -= 1;
+            current_inv = inv_time;
+        }
+
+        if (health <= 0) {
+            Debug.Log("GAME OVER");
+            Application.Quit();
+        }
+    }
+
     void OnCollisionStay2D(Collision2D coll) {
         if (coll.gameObject.tag == "Enemy") {
-            if (current_inv <= 0) {
-                health -= 1;
-                current_inv = inv_time;
-            }
+            TakeDamage();
+        }
+    }
 
-            if (health <= 0) {
-                Debug.Log("GAME OVER");
-                Application.Quit();
-            }
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "EnemyBullet") {
+            Destroy(other.gameObject);
+            TakeDamage();
         }
     }
 }

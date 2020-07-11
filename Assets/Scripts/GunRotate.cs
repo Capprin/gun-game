@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunRotate : MonoBehaviour
 {
 
-    private Vector3 setScale = new Vector3(7, 7, 0);
+    private Vector3 setScale = new Vector3(-2, 2, 0);
     void Start() {
         setScale = transform.localScale;
     }
