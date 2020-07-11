@@ -26,6 +26,7 @@ public class DungeonMaster : MonoBehaviour {
         enemy_types.Add(new EnemySpawner_BasicEnemyElite());
         enemy_types.Add(new EnemySpawner_GunEnemy());
         enemy_types.Add(new EnemySpawner_SnakeEnemy());
+        enemy_types.Add(new EnemySpawner_GunSnake());
         points = points_init;
         enemy_respawn_time = enemy_respawn_time_init;
         few_enemy_threshold = 2;
