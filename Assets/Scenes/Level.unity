@@ -403,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xRange: {x: -14, y: 14}
   yRange: {x: -10, y: 10}
+  points_init: 500
   reset: 0
 --- !u!4 &1542349188
 Transform:
