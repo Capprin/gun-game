@@ -15,10 +15,6 @@ public class DungeonMaster : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // check if all enemies dead
-        if (enemiesAlive == 0) {
-            Cleanup();
-            ResetRoom();
-        }
     }
 
     void ResetRoom() {
