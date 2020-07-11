@@ -16,10 +16,14 @@ public class FireGun : MonoBehaviour
 
     private int fire_delay;
     private bool can_fire = true;
+    private AudioSource audio_source;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Sound effect vars
+        audio_source = GetComponent<AudioSource>();
+
         //Gun = GameObject.FindGameObjectsWithTag("Gun")[0];
         fire_delay = fire_delay_init;
     }
@@ -33,6 +37,8 @@ public class FireGun : MonoBehaviour
         // if the gun is lost we will crash
         if (can_fire) {
             if (firing > 0) {
+                // sound effect
+                audio_source.Play(0);
                 // compute fire accuracy
                 float fireCone = 90f - 90f * accuracy;
                 float dirMod = Random.Range(-fireCone/2f, fireCone/2f);
