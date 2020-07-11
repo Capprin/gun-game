@@ -31,7 +31,6 @@ public class SnakeEnemy : MonoBehaviour
         node.GetComponent<BasicEnemy>().lookingFor = target;
         node.GetComponent<BasicEnemy>().speed = speed;
         node.GetComponent<BasicEnemy>().health = target.GetComponent<BasicEnemy>().health - head_health/((float)length);
-        Debug.Log(node.GetComponent<BasicEnemy>().health);
         // recurse
         AddNodes(node, remaining-1);
     }
