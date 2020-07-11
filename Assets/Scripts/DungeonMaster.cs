@@ -6,15 +6,25 @@ public class DungeonMaster : MonoBehaviour {
 
     public Vector2 xRange = new Vector2(-14, 14);
     public Vector2 yRange = new Vector2(-10, 10);
+    public int points_init = 500;
 
     public bool reset = false;
 
     private int enemiesAlive = 0;
     private ModManager modManager;
     private GameObject player;
+    private int points;
+    private List<EnemySpawner> enemy_types;
 
     // Start is called before the first frame update
     void Start() {
+
+        // Populate list of enemy types
+        enemy_types = new List<EnemySpawner>();
+        enemy_types.Add(new EnemySpawner_BasicEnemy());
+        enemy_types.Add(new EnemySpawner_BasicEnemyElite());
+        points = points_init;
+
         // create modManager if not already exists
         ModManager maybeManager = gameObject.GetComponent<ModManager>();
         if (maybeManager == null) {
@@ -33,7 +43,7 @@ public class DungeonMaster : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update() {  
         // check if all enemies dead
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if(enemies.Length == 0 || reset) {
@@ -45,24 +55,40 @@ public class DungeonMaster : MonoBehaviour {
     }
 
     void ResetRoom() {
-        // create enemies
-        GameObject[] enemies = new GameObject[4];
-        for (int i = 0; i < 4; i++) {
-            // random pos
+
+        // Check list of enemy types to see which enemies we can spawn with our max points
+        List<EnemySpawner> valid_enemy_types = new List<EnemySpawner>();
+        for(int i = 0; i < enemy_types.Count; i++) {
+            if(enemy_types[i].GetPoints() < points) {
+                valid_enemy_types.Add(enemy_types[i]);
+            }
+        }
+
+        while (valid_enemy_types.Count > 0) {
+
+            // Check list of enemy types to see which enemies we can spawn this turn
+            // Get random position for the next enemy!
             Vector3 ePos = new Vector3(Random.Range(xRange.x, xRange.y),
                                Random.Range(yRange.x, yRange.y),
                                0);
-            // instantiate
-            enemies[i] = (GameObject) Instantiate(Resources.Load("Enemy"),
-                                                 ePos,
-                                                 Quaternion.identity);
-            // set to follow player
-            enemies[i].GetComponent<BasicEnemy>().lookingFor = player;
+            // Choose enemy randomly
+            EnemySpawner enemy = valid_enemy_types[Random.Range(0, valid_enemy_types.Count)];
+            points -= enemy.GetPoints();
+            Instantiate(Resources.Load(enemy.GetName()), ePos, Quaternion.identity);
 
-            enemiesAlive++;
+
+            // Prune invalid enemies again
+            valid_enemy_types = new List<EnemySpawner>();
+            for (int i = 0; i < enemy_types.Count; i++) {
+                if (enemy_types[i].GetPoints() < points) {
+                    valid_enemy_types.Add(enemy_types[i]);
+                }
+            }
         }
-        
-        // create traps
+
+        // Reset and increase point counter
+        points_init += 100;
+        points = points_init;
     }
 
     void Cleanup() {
