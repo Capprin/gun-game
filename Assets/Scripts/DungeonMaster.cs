@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DungeonMaster : MonoBehaviour {
 
+    public Vector2 xRange = new Vector2(-14, 14);
+    public Vector2 yRange = new Vector2(-10, 10);
+
     private int enemiesAlive = 0;
 
     // Start is called before the first frame update
@@ -28,8 +31,8 @@ public class DungeonMaster : MonoBehaviour {
         GameObject[] enemies = new GameObject[4];
         for (int i = 0; i < 4; i++) {
             // random pos
-            Vector3 ePos = new Vector3(Random.Range(-10.0f, 10.0f),
-                               Random.Range(-10.0f, 10.0f),
+            Vector3 ePos = new Vector3(Random.Range(xRange.x, xRange.y),
+                               Random.Range(yRange.x, yRange.y),
                                0);
             // instantiate
             enemies[i] = (GameObject) Instantiate(Resources.Load("Enemy"),
