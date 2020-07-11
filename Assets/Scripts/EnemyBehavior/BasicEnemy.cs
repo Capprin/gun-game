@@ -5,6 +5,8 @@ using UnityEngine;
 public class BasicEnemy : MonoBehaviour
 {
 
+    public static float scaleUp = 1;
+    public static float speedMod = 1;
     public GameObject lookingFor = null;
     public float speed = 7;
     public float health = 200;
@@ -19,6 +21,8 @@ public class BasicEnemy : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
+
+        transform.localScale *= scaleUp;
     }
 
     private void Update() {
@@ -42,7 +46,7 @@ public class BasicEnemy : MonoBehaviour
         // move towards other
         transform.position = Vector2.MoveTowards(transform.position,
                                                  lookingFor.transform.position,
-                                                 speed * Time.fixedDeltaTime);
+                                                 speedMod * speed * Time.fixedDeltaTime);
 
         // TODO: rotate towards other (not needed atm; circle)
         // https://answers.unity.com/questions/1592029/how-do-you-make-enemies-rotate-to-your-position-in.html

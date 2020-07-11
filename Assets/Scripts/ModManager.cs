@@ -12,6 +12,12 @@ public class ModManager : MonoBehaviour {
         modIndex.Add(new ModIncreaseFireRate());
         modIndex.Add(new ModSlowMove());
         modIndex.Add(new ModBigBullets());
+        modIndex.Add(new ModSpeedBoost());
+        modIndex.Add(new ModEnemySpeedBoost());
+        modIndex.Add(new ModEnemySlowMove());
+        modIndex.Add(new ModMoreDamage());
+        modIndex.Add(new ModMoreAccuracy());
+        modIndex.Add(new ModBigEnemies());
     }
 
     public void ActivateRandom() {
