@@ -30,4 +30,10 @@ public class BasicEnemy : MonoBehaviour
         // TODO: rotate towards other (not needed atm; circle)
         // https://answers.unity.com/questions/1592029/how-do-you-make-enemies-rotate-to-your-position-in.html
     }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Bullet") {
+            Destroy(gameObject);
+        }
+    }
 }
