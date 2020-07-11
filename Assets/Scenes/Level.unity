@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 1542349189}
   m_Layer: 0
   m_Name: Dungeon Master
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,6 +404,7 @@ MonoBehaviour:
   xRange: {x: -14, y: 14}
   yRange: {x: -10, y: 10}
   points_init: 500
+  enemy_respawn_time_init: 5
   reset: 0
 --- !u!4 &1542349188
 Transform:
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   appliedModNames: []
+  fadeTime: 1
 --- !u!1 &1656871792
 GameObject:
   m_ObjectHideFlags: 0

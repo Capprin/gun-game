@@ -54,9 +54,13 @@ public class BasicEnemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Bullet") {
-            health -= other.GetComponent<Bullet>().damage;
-            Destroy(other.gameObject);
+            health -= other.GetComponent<Bullet>().damage;  // Take damage
+            Destroy(other.gameObject);                      // Remove bullet
             if (health <= 0) {
+                // On death, notify DM and remove self
+                GameObject dm = GameObject.FindGameObjectWithTag("GameController");
+                ModManager mm = dm.GetComponent<ModManager>();
+                mm.enemyDies();
                 Destroy(gameObject);
             }
         }
