@@ -15,6 +15,7 @@ public class DungeonMaster : MonoBehaviour {
     private int points;
     private List<EnemySpawner> enemy_types;
     private float enemy_respawn_time;
+    private int few_enemy_threshold;
 
     // Start is called before the first frame update
     void Start() {
@@ -27,6 +28,7 @@ public class DungeonMaster : MonoBehaviour {
         enemy_types.Add(new EnemySpawner_SnakeEnemy());
         points = points_init;
         enemy_respawn_time = enemy_respawn_time_init;
+        few_enemy_threshold = 2;
 
         // create modManager if not already exists
         ModManager maybeManager = gameObject.GetComponent<ModManager>();
@@ -55,19 +57,14 @@ public class DungeonMaster : MonoBehaviour {
         }
     }
 
-    // Legacy - Used to check for empty enemy list before spawning more enemies
-    /*
-    // Update is called once per frame
     void Update() {  
-        // check if all enemies dead
+        // If there are too few enemies remaining spawn more!
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if(enemies.Length == 0 || reset) {
+        if(enemies.Length <= few_enemy_threshold) {
             SpawnEnemies();
-            modManager.ActivateRandom();
-            reset = false;
+            few_enemy_threshold++;  // If killed all enemies, spawn reinforcements mor readily
         }
     }
-    */
 
     void SpawnEnemies() {
 
@@ -83,9 +80,11 @@ public class DungeonMaster : MonoBehaviour {
 
             // Check list of enemy types to see which enemies we can spawn this turn
             // Get random position for the next enemy!
-            Vector3 ePos = new Vector3(Random.Range(xRange.x, xRange.y),
-                               Random.Range(yRange.x, yRange.y),
-                               0);
+            Vector3 ePos = new Vector3(Random.Range(xRange.x, xRange.y), Random.Range(yRange.x, yRange.y), 0); // Random position
+            while (Vector3.Distance(player.transform.position, ePos) < 5.0f) {
+                ePos = new Vector3(Random.Range(xRange.x, xRange.y), Random.Range(yRange.x, yRange.y), 0); // Reroll if too close to player
+            }
+
             // Choose enemy randomly
             EnemySpawner enemy = valid_enemy_types[Random.Range(0, valid_enemy_types.Count)];
             points -= enemy.GetPoints();
