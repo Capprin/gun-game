@@ -22,8 +22,9 @@ public class DungeonMaster : MonoBehaviour {
 
         // Populate list of enemy types
         enemy_types = new List<EnemySpawner>();
-        enemy_types.Add(new EnemySpawner_BasicEnemy());
-        enemy_types.Add(new EnemySpawner_BasicEnemyElite());
+        //enemy_types.Add(new EnemySpawner_BasicEnemy());
+        //enemy_types.Add(new EnemySpawner_BasicEnemyElite());
+        enemy_types.Add(new EnemySpawner_StraightEnemy());
         enemy_types.Add(new EnemySpawner_GunEnemy());
         enemy_types.Add(new EnemySpawner_SnakeEnemy());
         enemy_types.Add(new EnemySpawner_GunSnake());
