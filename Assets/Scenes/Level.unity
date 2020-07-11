@@ -162,10 +162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMargin: 1
   yMargin: 1
-  xSmooth: 8
-  ySmooth: 8
-  maxXAndY: {x: 0, y: 0}
-  minXAndY: {x: 0, y: 0}
+  xSmooth: 16
+  ySmooth: 16
+  maxXAndY: {x: 10, y: 14}
+  minXAndY: {x: -10, y: -14}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
