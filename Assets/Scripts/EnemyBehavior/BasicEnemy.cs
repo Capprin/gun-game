@@ -57,10 +57,10 @@ public class BasicEnemy : MonoBehaviour
             health -= other.GetComponent<Bullet>().damage;  // Take damage
             Destroy(other.gameObject);                      // Remove bullet
             if (health <= 0) {
-                // On death, notify DM and remove self
-                GameObject dm = GameObject.FindGameObjectWithTag("GameController");
-                ModManager mm = dm.GetComponent<ModManager>();
-                mm.enemyDies();
+                // On death, spawn powerup and remove self
+                if (Random.Range(0.0f, 1.0f) > 0.75f) {
+                    GameObject mod = (GameObject)Instantiate(Resources.Load("Mod"), transform.position, transform.rotation);
+                }
                 Destroy(gameObject);
             }
         }

@@ -57,10 +57,4 @@ public class ModManager : MonoBehaviour {
             yield return null;
         }
     }
-
-    public void enemyDies() {
-        if (Random.Range(0.0f, 1.0f) > 0.75f) {
-            ActivateRandom();
-        }
-    }
 }
