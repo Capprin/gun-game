@@ -6,7 +6,7 @@ public class FireGun : MonoBehaviour
 {
 
     GameObject Gun;
-    public  int fire_delay_init = 60;
+    public int fire_delay_init = 60;
     public int bullet_speed = 2000;
 
     int fire_delay;
@@ -40,6 +40,5 @@ public class FireGun : MonoBehaviour
                 can_fire = true;
             }
         }
-        
     }
 }
