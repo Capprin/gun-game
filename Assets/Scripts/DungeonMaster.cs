@@ -7,13 +7,14 @@ public class DungeonMaster : MonoBehaviour {
     public Vector2 xRange = new Vector2(-14, 14);
     public Vector2 yRange = new Vector2(-10, 10);
     public int points_init = 500;
-
+    public float enemy_respawn_time_init = 5.0f;
     public bool reset = false;
 
     private ModManager modManager;
     private GameObject player;
     private int points;
     private List<EnemySpawner> enemy_types;
+    private float enemy_respawn_time;
 
     // Start is called before the first frame update
     void Start() {
@@ -25,6 +26,7 @@ public class DungeonMaster : MonoBehaviour {
         enemy_types.Add(new EnemySpawner_GunEnemy());
         enemy_types.Add(new EnemySpawner_SnakeEnemy());
         points = points_init;
+        enemy_respawn_time = enemy_respawn_time_init;
 
         // create modManager if not already exists
         ModManager maybeManager = gameObject.GetComponent<ModManager>();
@@ -40,29 +42,41 @@ public class DungeonMaster : MonoBehaviour {
         player.name = "Player";
 
         // do initial setup
-        ResetRoom();
+        SpawnEnemies();
     }
 
+    // Handle timer stuff here
+    private void FixedUpdate() {
+        // Respawn enemies every X seconds
+        enemy_respawn_time -= Time.deltaTime;
+        if(enemy_respawn_time < 0) {
+            enemy_respawn_time = enemy_respawn_time_init;
+            SpawnEnemies();
+        }
+    }
+
+    // Legacy - Used to check for empty enemy list before spawning more enemies
+    /*
     // Update is called once per frame
     void Update() {  
         // check if all enemies dead
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if(enemies.Length == 0 || reset) {
-            Cleanup();
-            ResetRoom();
+            SpawnEnemies();
             modManager.ActivateRandom();
             reset = false;
         }
     }
+    */
 
-    void ResetRoom() {
+    void SpawnEnemies() {
 
         // Check list of enemy types to see which enemies we can spawn with our max points
         List<EnemySpawner> valid_enemy_types = new List<EnemySpawner>();
         for(int i = 0; i < enemy_types.Count; i++) {
             if(enemy_types[i].GetPoints() < points) {
                 valid_enemy_types.Add(enemy_types[i]);
-            }
+            } 
         }
 
         while (valid_enemy_types.Count > 0) {
@@ -88,7 +102,7 @@ public class DungeonMaster : MonoBehaviour {
         }
 
         // Reset and increase point counter
-        points_init += 100;
+        points_init += 40;
         points = points_init;
     }
 

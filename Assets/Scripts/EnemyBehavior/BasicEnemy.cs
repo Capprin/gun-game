@@ -54,9 +54,13 @@ public class BasicEnemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Bullet") {
-            health -= other.GetComponent<Bullet>().damage;
-            Destroy(other.gameObject);
+            health -= other.GetComponent<Bullet>().damage;  // Take damage
+            Destroy(other.gameObject);                      // Remove bullet
             if (health <= 0) {
+                // On death, spawn powerup and remove self
+                if (Random.Range(0.0f, 1.0f) > 0.75f) {
+                    GameObject mod = (GameObject)Instantiate(Resources.Load("Mod"), transform.position, transform.rotation);
+                }
                 Destroy(gameObject);
             }
         }
