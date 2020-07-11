@@ -35,7 +35,8 @@ public class DungeonMaster : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // check if all enemies dead
-        if (reset) {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if(enemies.Length == 0 || reset) {
             Cleanup();
             ResetRoom();
             modManager.ActivateRandom();
