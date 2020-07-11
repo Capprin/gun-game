@@ -7,7 +7,7 @@ public class FireGun : MonoBehaviour
 
     GameObject Gun;
     public int fire_delay_init = 60;
-    public int bullet_speed = 2000;
+    public float bullet_speed = 2000;
     public float bullet_scale = 1;
 
     // should be between 0 and 1
@@ -42,8 +42,6 @@ public class FireGun : MonoBehaviour
                 bullet.transform.Rotate(Vector3.forward * dirMod);
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.AddForce(bullet_speed * bullet.transform.right);
-
-                Debug.Log("Facing: " + transform.eulerAngles);
 
                 can_fire = false;
             }
