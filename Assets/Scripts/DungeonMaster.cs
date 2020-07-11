@@ -24,6 +24,7 @@ public class DungeonMaster : MonoBehaviour {
         enemy_types.Add(new EnemySpawner_BasicEnemy());
         enemy_types.Add(new EnemySpawner_BasicEnemyElite());
         enemy_types.Add(new EnemySpawner_GunEnemy());
+        enemy_types.Add(new EnemySpawner_SnakeEnemy());
         points = points_init;
 
         // create modManager if not already exists

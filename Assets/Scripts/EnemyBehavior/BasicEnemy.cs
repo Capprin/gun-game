@@ -7,7 +7,7 @@ public class BasicEnemy : MonoBehaviour
 
     public GameObject lookingFor = null;
     public float speed = 7;
-    public int health = 200;
+    public float health = 200;
 
     private SpriteRenderer sprite;
     private Rigidbody2D body;
@@ -17,9 +17,6 @@ public class BasicEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (lookingFor == null) {
-            lookingFor = GameObject.Find("Player");
-        }
         body = GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -38,6 +35,10 @@ public class BasicEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // find player if lookingFor ever empties
+        if (lookingFor == null) {
+            lookingFor = GameObject.Find("Player");
+        }
         // move towards other
         transform.position = Vector2.MoveTowards(transform.position,
                                                  lookingFor.transform.position,
