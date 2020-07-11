@@ -10,8 +10,12 @@ public class FireGun : MonoBehaviour
     public int bullet_speed = 2000;
     public float bullet_scale = 1;
 
-    int fire_delay;
-    bool can_fire = true;
+    // should be between 0 and 1
+    public float accuracy = 0.9f;
+    public float max_fire_cone = 90;
+
+    private int fire_delay;
+    private bool can_fire = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +29,23 @@ public class FireGun : MonoBehaviour
     {
         float firing = Input.GetAxis("Fire1");
 
-        // TODO - assuming exactly one gun-tagged object at all times; if the gun is lost we will crash
+        // assuming exactly one gun-tagged object at all times
+        // if the gun is lost we will crash
         if (can_fire) {
             if (firing > 0) {
+                // compute fire accuracy
+                float fireCone = 90f - 90f * accuracy;
+                float dirMod = Random.Range(-fireCone/2f, fireCone/2f);
+
+                GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, transform.rotation);
+                bullet.transform.localScale = bullet.transform.localScale * bullet_scale;
+                bullet.transform.Rotate(Vector3.forward * dirMod);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(bullet_speed * bullet.transform.right);
+
+                Debug.Log("Facing: " + transform.eulerAngles);
+
                 can_fire = false;
-                GameObject Bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, transform.rotation);
-                Bullet.transform.localScale = Bullet.transform.localScale * bullet_scale;
-                Rigidbody2D rb = Bullet.GetComponent<Rigidbody2D>();
-                rb.AddRelativeForce(new Vector2(bullet_speed,0));
             }
         }
         else {
