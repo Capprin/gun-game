@@ -381,6 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542349188}
   - component: {fileID: 1542349187}
+  - component: {fileID: 1542349189}
   m_Layer: 0
   m_Name: Dungeon Master
   m_TagString: Untagged
@@ -400,6 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a66f6da29632ff448c45c749edc665a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xRange: {x: -14, y: 14}
+  yRange: {x: -10, y: 10}
 --- !u!4 &1542349188
 Transform:
   m_ObjectHideFlags: 0
@@ -414,6 +417,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1542349189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542349186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bedfec27275b3e349966301d6ae4e969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmp_delay: 180
 --- !u!1 &1656871792
 GameObject:
   m_ObjectHideFlags: 0
