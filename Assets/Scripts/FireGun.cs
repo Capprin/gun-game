@@ -8,6 +8,7 @@ public class FireGun : MonoBehaviour
     GameObject Gun;
     public int fire_delay_init = 60;
     public int bullet_speed = 2000;
+    public float bullet_scale = 1;
 
     int fire_delay;
     bool can_fire = true;
@@ -29,8 +30,9 @@ public class FireGun : MonoBehaviour
             if (firing > 0) {
                 can_fire = false;
                 GameObject Bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, transform.rotation);
+                Bullet.transform.localScale = Bullet.transform.localScale * bullet_scale;
                 Rigidbody2D rb = Bullet.GetComponent<Rigidbody2D>();
-                rb.AddRelativeForce(new Vector2(bullet_speed,0));   
+                rb.AddRelativeForce(new Vector2(bullet_speed,0));
             }
         }
         else {

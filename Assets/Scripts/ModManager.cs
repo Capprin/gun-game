@@ -10,6 +10,8 @@ public class ModManager : MonoBehaviour {
     void Start() {
         // add newly created mods to index
         modIndex.Add(new ModIncreaseFireRate());
+        modIndex.Add(new ModSlowMove());
+        modIndex.Add(new ModBigBullets());
     }
 
     public void ActivateRandom() {
