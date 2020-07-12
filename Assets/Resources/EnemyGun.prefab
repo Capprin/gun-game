@@ -222,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookingFor: {fileID: 0}
   speed: 4
-  health: 200
+  health: 50
 --- !u!1001 &3363381856582691318
 PrefabInstance:
   m_ObjectHideFlags: 0
