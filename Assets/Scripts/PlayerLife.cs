@@ -86,6 +86,12 @@ public class PlayerLife : MonoBehaviour {
         }
     }
 
+    void OnCollision2D(Collision2D coll) {
+        if (coll.gameObject.tag == "Enemy") {
+            TakeDamage();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "EnemyBullet") {
             Destroy(other.gameObject);

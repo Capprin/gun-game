@@ -6,7 +6,7 @@ public class ModSpeedBoost : Mod
 {
     public override void Activate() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerMovement>().speed *= 1.05f;
+        player.GetComponent<PlayerMovement>().speed *= 1.30f;
     }
 
     public override string GetName() {
