@@ -16,7 +16,7 @@ MonoBehaviour:
   speed: 7
   health: 15
   aimDelay: 1
-  fireVel: 30
+  fireVel: 25
 --- !u!1001 &6335821494623765758
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class ModIncreaseFireRate : Mod
 {
     public override void Activate() {
         GameObject gun = GameObject.FindGameObjectWithTag("Gun");
-        if (gun.GetComponent<FireGun>().fire_delay_init >= 2) {
+        if (gun.GetComponent<FireGun>().fire_delay_init >= 4) {
             gun.GetComponent<FireGun>().fire_delay_init /= 2;
         }
     }

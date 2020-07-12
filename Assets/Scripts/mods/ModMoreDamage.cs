@@ -7,7 +7,7 @@ public class ModMoreDamage : Mod
     public override void Activate() {
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
         foreach (GameObject bullet in bullets) {
-            bullet.GetComponent<Bullet>().damage *= 1.30f;
+            bullet.GetComponent<Bullet>().damage *= 1.50f;
         }
     }
 
