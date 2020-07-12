@@ -28,7 +28,7 @@ public class ModMovement : MonoBehaviour {
     }
 
     // Collide with player, give activate and destroy mod
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         if (other.tag == "Player") {
             GameObject dm = GameObject.FindGameObjectWithTag("GameController");
             ModManager mm = dm.GetComponent<ModManager>();
