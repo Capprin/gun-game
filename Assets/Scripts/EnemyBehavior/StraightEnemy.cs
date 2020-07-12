@@ -28,6 +28,10 @@ public class StraightEnemy : BasicEnemy
         }
     }
 
+    private void Update() {
+        
+    }
+
     void Fire() {
         // get unit vector to player location
         Vector2 toOther = lookingFor.transform.position - transform.position;

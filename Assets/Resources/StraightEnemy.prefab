@@ -84,6 +84,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: StraightEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7070760800208992861, guid: ff206c9e457182442861f0aca277fa4c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070760800208992861, guid: ff206c9e457182442861f0aca277fa4c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.86724025
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070760800208992861, guid: ff206c9e457182442861f0aca277fa4c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.21542363
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1182770520360908074, guid: ff206c9e457182442861f0aca277fa4c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ff206c9e457182442861f0aca277fa4c, type: 3}

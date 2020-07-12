@@ -208,6 +208,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2512523753843313699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968008077925105787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3b5672c74a48c4db7e7b68e14e3fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookingFor: {fileID: 0}
+  speed: 4
+  health: 200
 --- !u!1001 &3363381856582691318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -285,8 +300,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGun
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7070760800208992861, guid: ff206c9e457182442861f0aca277fa4c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070760800208992861, guid: ff206c9e457182442861f0aca277fa4c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.72609735
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070760800208992861, guid: ff206c9e457182442861f0aca277fa4c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7924528
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1182770520360908074, guid: ff206c9e457182442861f0aca277fa4c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ff206c9e457182442861f0aca277fa4c, type: 3}
+--- !u!1 &7968008077925105787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4627779415130089869, guid: ff206c9e457182442861f0aca277fa4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3363381856582691318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &175715426531533253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3232852005889050675, guid: ff206c9e457182442861f0aca277fa4c,
