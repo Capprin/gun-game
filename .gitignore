@@ -6,3 +6,4 @@ Library/
 Assembly-CSharp.csproj
 obj/
 Packages/packages-lock.json
+Dist/
